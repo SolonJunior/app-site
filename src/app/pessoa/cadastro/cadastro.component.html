@@ -1,0 +1,57 @@
+
+
+<form (ngSubmit)="salvar()">   
+    
+    <br/>
+    <h3>{{titulo}}</h3>
+
+    <label>Nome:
+        <input type="input" name="nome" size="30" [(ngModel)]="pessoa.nome"/>
+    </label><br/><br/>
+
+    <label>CPF:
+        <input type="input" name="cpf" size="20" [(ngModel)]="pessoa.cpf"/>
+    </label><br/><br/>
+
+    <label>Data Nascimento:
+        <input type="date" name="dataNascimento" size="20" [(ngModel)]="pessoa.dataNascimento"/>
+    </label><br/><br/>
+    
+    <label>Email:
+        <input type="email" name="email" size="30" [(ngModel)]="pessoa.email"/>
+    </label><br/><br/>
+
+    <hr>
+
+    <label>DDD:
+        <input type="input" name="ddd" size="5" [(ngModel)]="telefone.ddd"/>
+    </label>
+
+    <label>Telefone:
+        <input type="input" name="telefone" size="15" [(ngModel)]="telefone.numero"/>
+    </label>
+    
+    <a (click)="adicionar(telefone);">Adicionar</a><br/><br/>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>DDD</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let telefone of pessoa.telefones; let i = index;">
+            <td>{{ telefone.id }}</td>        
+            <td>{{ telefone.ddd }}</td>        
+            <td>{{ telefone.numero }}</td>
+            <td><a (click)="excluir(telefone, i);">Excluir</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="submit">Salvar</button>
+</form>

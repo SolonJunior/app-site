@@ -1,0 +1,39 @@
+
+<h3>{{titulo}}</h3>
+
+<label>Nome:
+    <input type="input" name="nome" size="20" [(ngModel)]="nome" #nomeProcurado (keyup)="0" />
+</label>
+
+<label>CPF:
+    <input type="input" name="cpf" size="15" [(ngModel)]="cpf" #cpfProcurado (keyup)="0"/>
+</label><br/><br/>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>CPF</th>
+        <th>Idade</th>
+        <th>Quantidade de Telefones</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+    </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let pessoa of pessoas | filtroPessoas: nomeProcurado.value: cpfProcurado.value; let i = index;">
+        <td>{{ pessoa.id }}</td>        
+        <td>{{ pessoa.nome }} </td>        
+        <td>{{ pessoa.email }}</td>
+        <td>{{ pessoa.cpf }}</td>
+        <td>{{ pessoa.idade }}</td>
+        <td>{{ pessoa.telefones.length }}</td>
+        <td><a (click)="editar(pessoa.id);">Editar</a></td>
+        <td><a (click)="excluir(pessoa.id, i);">Excluir</a></td>
+        </tr>
+    </tbody>
+</table>
+      
